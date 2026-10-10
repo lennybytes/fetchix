@@ -61,21 +61,13 @@ Build the release binary:
 ./build.sh
 ```
 
-Install it to `/usr/local/bin/fetchix` with `sudo`:
-
-```bash
-./install.sh
-```
-
-Or with `doas`:
-
-```bash
-./doas-install.sh
-```
-
 The `doas-build.sh` script is also available for symmetry with `build.sh`; building itself does not require elevated privileges.
 
-For convenience, `build-and-run.sh` builds the release binary and runs it immediately.
+Install the binary to `/usr/local/bin/fetchix`:
+
+```bash
+sudo cp target/release/fetchix /usr/local/bin/fetchix
+```
 
 ## Usage
 
@@ -105,10 +97,7 @@ fetchix/
 ├── Cargo.toml                # Package manifest
 ├── Cargo.lock                # Dependency lock file
 ├── build.sh                  # Build release binary
-├── build-and-run.sh          # Build release binary and run it
 ├── doas-build.sh             # Build release binary (doas variant)
-├── install.sh                # Install to /usr/local/bin (sudo)
-├── doas-install.sh           # Install to /usr/local/bin (doas)
 └── README.md                 # This file
 ```
 
