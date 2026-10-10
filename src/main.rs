@@ -30,7 +30,18 @@ fn get_distro() -> String {
         .unwrap_or_else(|| "Unknown".to_string())
 }
 
-// KORREKTUR: Rückgabetyp -> String hinzugefügt und unwrap_or_else genutzt
+fn get_desktop_environment() -> String {
+    for key in ["XDG_CURRENT_DESKTOP", "DESKTOP_SESSION"] {
+        if let Ok(value) = env::var(key) {
+            if !value.trim().is_empty() {
+                return value;
+            }
+        }
+    }
+
+    "Unknown".to_string()
+}
+
 fn get_shell() -> String {
     env::var("SHELL").unwrap_or_else(|e| format!("Couldn't read SHELL env var: {}", e))
 }
@@ -39,5 +50,6 @@ fn main() {
     println!("OS:       {}", get_distro());
     println!("Kernel:   {}", get_kernel());
     println!("Local IP: {}", get_local_ip());
-    println!("Shell:    {}", get_shell()); // KORREKTUR: Hier aufgerufen
+    println!("Shell:    {}", get_shell());
+    println!("Desktop:  {}", get_desktop_environment());
 }
