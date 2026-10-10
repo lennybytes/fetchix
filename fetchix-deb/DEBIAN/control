@@ -1,0 +1,8 @@
+Package: fetchix
+Version: 1.0.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Maintainer: Lenny <lenny.fisbeck@proton.me>
+Description: System information tool written in Rust
+ A fastfetch-like command-line system information utility.
